@@ -60,3 +60,30 @@ button {
 button:hover {
     background-color: #A267AC;
 }
+
+
+/* LCARS menu styling */
+.lcars-menu {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    background-color: #0B0033;
+    padding: 10px;
+}
+.lcars-menu .menu-item {
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #0B0033;
+    text-align: center;
+    min-width: 80px;
+}
+/* Individual colors for menu items reminiscent of LCARS tones */
+.menu-item.character { background-color: #FFB700; }
+.menu-item.attributes { background-color: #A67CFF; }
+.menu-item.defenses { background-color: #FF8B00; }
+.menu-item.languages { background-color: #84C0E6; }
+.menu-item:hover {
+    filter: brightness(1.2);
+}
