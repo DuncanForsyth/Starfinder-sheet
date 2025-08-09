@@ -1,89 +1,109 @@
 
+/*
+ * Base styling
+ *
+ * Pull the primary font from the LCARS library and avoid overriding the
+ * colour scheme defined in classic.css.  The Antonio typeface comes
+ * bundled with the LCARS assets and pairs nicely with the overall look.
+ */
 body {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #0B0033;
-    color: #EEEFF0;
+    font-family: Antonio, sans-serif;
+    /* The background and text colours are inherited from classic.css via
+       CSS variables.  Avoid setting explicit colours here. */
 }
-header.lcars-header {
-    background-color: #3D2C8D;
-    color: #F8F7FF;
-    padding: 10px 20px;
-    font-size: 1.5em;
-    text-align: center;
-}
+
+/* Remove the original header styles because the LCARS text bar now handles
+   the page title. */
+/* Layout for the main content.  Panels stack vertically and have a small
+   gap between them. */
 main {
-    padding: 20px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1rem;
 }
+
+/* Panels hold groups of related inputs.  The border and background colours
+   use variables defined in the LCARS theme. */
 .panel {
-    background-color: #150578;
+    border: var(--panel-border);
     border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    padding: 1rem;
+    background-color: var(--panel-7-color);
 }
+
 .panel h2 {
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
     font-size: 1.2em;
-    color: #F8F7FF;
+    color: var(--font-color);
 }
+
 label {
     display: flex;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     font-size: 0.9em;
 }
+
 label span {
     flex: 0 0 80px;
+    font-weight: bold;
+    color: var(--font-color);
 }
+
 label input,
 label textarea {
     flex: 1;
-    padding: 5px;
+    padding: 0.25rem 0.5rem;
     border: none;
     border-radius: 4px;
-    background-color: #352F44;
-    color: #F8F7FF;
+    background-color: var(--panel-13-color);
+    color: var(--black);
 }
+
 button {
-    background-color: #8F3985;
-    color: #F8F7FF;
+    background-color: var(--orange);
+    color: black;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 0.5rem 1rem;
     font-size: 1em;
     cursor: pointer;
 }
 button:hover {
-    background-color: #A267AC;
+    filter: brightness(1.1);
 }
 
-
-/* LCARS menu styling */
+/* LCARS menu styling
+   The menu sits just below the title bar and uses colours from the
+   LCARS palette.  Items wrap on small screens. */
 .lcars-menu {
     display: flex;
-    gap: 10px;
-    justify-content: space-around;
-    background-color: #0B0033;
-    padding: 10px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0.5rem 0 1rem;
+    padding: 0 1rem;
 }
+
 .lcars-menu .menu-item {
-    padding: 10px 15px;
+    padding: 0.5rem 1rem;
     border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
-    color: #0B0033;
+    color: black;
+    min-width: 70px;
     text-align: center;
-    min-width: 80px;
 }
-/* Individual colors for menu items reminiscent of LCARS tones */
-.menu-item.character { background-color: #FFB700; }
-.menu-item.attributes { background-color: #A67CFF; }
-.menu-item.defenses { background-color: #FF8B00; }
-.menu-item.languages { background-color: #84C0E6; }
-.menu-item:hover {
-    filter: brightness(1.2);
+
+/* Assign specific colours to each menu item using LCARS variables. */
+.menu-item.character { background-color: var(--golden-orange); }
+.menu-item.attributes { background-color: var(--african-violet); }
+.menu-item.defenses { background-color: var(--orange); }
+.menu-item.notes { background-color: var(--red); }
+
+.lcars-menu .menu-item:hover {
+    filter: brightness(1.1);
 }
